@@ -4,13 +4,13 @@ edit .ts files
 
 test with x.cmd
 
-test api with http://localhost:3000/api?secret=123&folder=linkBlog&cmd=i 
+test api with http://localhost:3000/api?secret=123&folder=linkBlog&cmd=i
 
 update version in Base.ts and in package.json, both
 
 npm login. both accounts should work
 
-check age of exApp1.zip, from http://github.com/topseed/topseed-example-1/tree/master/public
+check age of exApp1.zip, from ../exApp1 - that is hello world.
 (I use 7zip)
 
 ./publish.cmd

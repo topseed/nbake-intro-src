@@ -11,7 +11,7 @@ const logger = require('tracer').console();
 const os = require('os');
 class NBake {
     ver() {
-        return 'v2.04.018 beta';
+        return 'v2.04.019 beta';
     }
 }
 exports.NBake = NBake;
@@ -252,7 +252,7 @@ class Items {
     itemize() {
         console.log('Itemizing: ' + this.dir);
         const rootDir = this.dir;
-        let fn = rootDir + '/meta.yaml';
+        let fn = rootDir + '/items.yaml';
         let y = yaml.load(fs.readFileSync((fn)));
         console.log(y);
         delete y.basedir;

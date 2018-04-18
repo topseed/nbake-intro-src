@@ -1,5 +1,5 @@
 cls
 call tsc
-rem ts-node nbake.ts -t ../play
-rem ts-node nbake.ts ../play/page
-ts-node api.ts
+ts-node nbake.ts -i ../exApp1/linkBlog
+rem ts-node nbake.ts ../exApp1/page
+rem ts-node api.ts
