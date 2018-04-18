@@ -1,0 +1,47 @@
+{
+	"name": "nbake",
+	"version": "2.04.018",
+	"description": "Bake a pug recursively, including any binding info",
+	"main": "nbake.js",
+	"bin": {
+		"nbake": "nbake.js",
+		"nbake-cli": "nbake.js"
+	},
+	"license": "APACHE2",
+	"author": "http://github.com/topseed/nbake",
+	"bugs": "http://github.com/topseed/nbake",
+	"homepage": "http://github.com/topseed/nbake",
+	"repository": {
+		"type": "git",
+		"url": "http://github.com/topseed/nbake"
+	},
+	"keywords": [
+		"nbake",
+		"topseed",
+		"pug",
+		"s3",
+		"staticgen",
+		"cms",
+		"designer"
+	],
+	"engines": {
+		"node": ">=8.10"
+	},
+	"dependencies": {
+		"adm-zip": "^0.4.7",
+		"command-line-args": "^5.0.2",
+		"filehound": "^1.16.2",
+		"js-yaml": "^3.11.0",
+		"jstransformer": "^1.0.0",
+		"jstransformer-marked": "^1.0.3",
+		"pug": "^2.0.3",
+		"riot-compiler": "^3.4.0",
+		"sitemap": "^1.13.0",
+		"tracer": "^0.8.12"
+	},
+	"devDependencies": {
+		"express": "^4.16.3",
+		"formidable": "^1.2.1",
+		"image-downloader": "^3.3.0"
+	}
+}
