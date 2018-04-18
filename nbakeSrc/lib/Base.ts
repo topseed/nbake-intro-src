@@ -18,7 +18,7 @@ const os = require('os')
 
 export class NBake {
 	ver() {
-		return 'v2.04.019 beta'
+		return 'v2.04.020 beta'
 	}
 }
 
@@ -318,7 +318,7 @@ export class Items {
 
 		const rootDir:string = this.dir
 		// header
-		let fn:string = rootDir +'/items.yaml'
+		let fn:string = rootDir +'/meta_d.yaml'
 		let y = yaml.load(fs.readFileSync((fn)))
 		console.log(y)
 
