@@ -11,7 +11,7 @@ const logger = require('tracer').console();
 const os = require('os');
 class NBake {
     ver() {
-        return 'v2.04.020a beta';
+        return 'v2.04.021 beta';
     }
 }
 exports.NBake = NBake;

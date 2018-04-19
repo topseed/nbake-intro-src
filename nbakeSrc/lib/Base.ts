@@ -18,7 +18,7 @@ const os = require('os')
 
 export class NBake {
 	ver() {
-		return 'v2.04.020 beta'
+		return 'v2.04.021 beta'
 	}
 }
 
