@@ -18,7 +18,7 @@ const os = require('os')
 
 export class NBake {
 	ver() {
-		return 'v2.04.021 beta'
+		return 'v2.04.022 beta'
 	}
 }
 
@@ -185,8 +185,18 @@ export class Meta {
 	constructor(path:string) {
 		//logger.trace(path)
 		this.path = path
-		let y = yaml.load(fs.readFileSync(path))
+		let y = yaml.load(fs.readFileSync(path+'/meta.yaml'))
 		this.props = y
+
+		let keys = Object.keys( y )
+		if(keys.includes('jdata')) this.addData()
+	}
+	addData() {// load json
+		let jn = this.props.jdata
+		let fn = this.path+'/'+jn
+		logger.trace( fn)
+		let jso = fs.readFileSync(fn)
+		this.props.jdata = JSON.parse(jso)
 	}
 	exists():boolean {
 		var count = this.props.length
@@ -226,7 +236,7 @@ export class Bake {
 			return ' '
 
 		process.chdir(this.dir)
-		let m = new Meta(this.dir+'/meta.yaml')
+		let m = new Meta(this.dir)
 
 		this.cli(this.dir, m)//process pug-cli
 
@@ -291,7 +301,7 @@ export class Items {
 
 	addAnItem(dn) {
 		console.log(' '+ dn)
-		let y = yaml.load(fs.readFileSync((dn+'/meta.yaml')))
+		let y = yaml.load(fs.readFileSync(dn+'/meta.yaml'))
 		//logger.trace(y)
 		if(y.hasOwnProperty('publish')) {
 			if(y.publish==false) {

@@ -11,7 +11,7 @@ const logger = require('tracer').console();
 const os = require('os');
 class NBake {
     ver() {
-        return 'v2.04.021 beta';
+        return 'v2.04.022 beta';
     }
 }
 exports.NBake = NBake;
@@ -146,8 +146,18 @@ exports.Dirs = Dirs;
 class Meta {
     constructor(path) {
         this.path = path;
-        let y = yaml.load(fs.readFileSync(path));
+        let y = yaml.load(fs.readFileSync(path + '/meta.yaml'));
         this.props = y;
+        let keys = Object.keys(y);
+        if (keys.includes('jdata'))
+            this.addData();
+    }
+    addData() {
+        let jn = this.props.jdata;
+        let fn = this.path + '/' + jn;
+        logger.trace(fn);
+        let jso = fs.readFileSync(fn);
+        this.props.jdata = JSON.parse(jso);
     }
     exists() {
         var count = this.props.length;
@@ -183,7 +193,7 @@ class Bake {
         if (!fs.existsSync(this.dir + '/index.pug'))
             return ' ';
         process.chdir(this.dir);
-        let m = new Meta(this.dir + '/meta.yaml');
+        let m = new Meta(this.dir);
         this.cli(this.dir, m);
         let html = pug.renderFile(this.dir + '/index.pug', m.getAll());
         let fn = this.dir + '/index.html';
@@ -234,7 +244,7 @@ class Items {
     }
     addAnItem(dn) {
         console.log(' ' + dn);
-        let y = yaml.load(fs.readFileSync((dn + '/meta.yaml')));
+        let y = yaml.load(fs.readFileSync(dn + '/meta.yaml'));
         if (y.hasOwnProperty('publish')) {
             if (y.publish == false) {
                 console.log('  skipped');
