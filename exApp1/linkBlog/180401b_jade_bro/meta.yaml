@@ -15,6 +15,6 @@ author: Travis Neilson
 date_modified: 1522597131
 tags:
 
-jdata: items.json
+include: items.json
 
 

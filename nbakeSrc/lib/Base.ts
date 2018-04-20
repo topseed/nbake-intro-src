@@ -18,7 +18,7 @@ const os = require('os')
 
 export class NBake {
 	ver() {
-		return 'v2.04.023 beta'
+		return 'v2.04.025 alpha'
 	}
 }
 
@@ -190,14 +190,14 @@ export class Meta {
 		this.props = y
 
 		let keys = Object.keys( y )
-		if(keys.includes('jdata')) this.addData()
+		if(keys.includes('include')) this.addData()
 	}
 	addData() {// load json
-		let jn = this.props.jdata
+		let jn = this.props.include
 		let fn = this.path+'/'+jn
 		logger.trace( fn)
 		let jso = fs.readFileSync(fn)
-		this.props.jdata = JSON.parse(jso)
+		Object.assign(this.props, JSON.parse(jso)) // merge
 	}
 	exists():boolean {
 		var count = this.props.length

@@ -11,7 +11,7 @@ const logger = require('tracer').console();
 const os = require('os');
 class NBake {
     ver() {
-        return 'v2.04.023 beta';
+        return 'v2.04.025 alpha';
     }
 }
 exports.NBake = NBake;
@@ -151,15 +151,15 @@ class Meta {
             y = {};
         this.props = y;
         let keys = Object.keys(y);
-        if (keys.includes('jdata'))
+        if (keys.includes('include'))
             this.addData();
     }
     addData() {
-        let jn = this.props.jdata;
+        let jn = this.props.include;
         let fn = this.path + '/' + jn;
         logger.trace(fn);
         let jso = fs.readFileSync(fn);
-        this.props.jdata = JSON.parse(jso);
+        Object.assign(this.props, JSON.parse(jso));
     }
     exists() {
         var count = this.props.length;
