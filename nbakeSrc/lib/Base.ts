@@ -18,7 +18,7 @@ const os = require('os')
 
 export class NBake {
 	ver() {
-		return 'v2.04.022 beta'
+		return 'v2.04.023 beta'
 	}
 }
 
@@ -186,6 +186,7 @@ export class Meta {
 		//logger.trace(path)
 		this.path = path
 		let y = yaml.load(fs.readFileSync(path+'/meta.yaml'))
+		if(!y) y= {}
 		this.props = y
 
 		let keys = Object.keys( y )

@@ -11,7 +11,7 @@ const logger = require('tracer').console();
 const os = require('os');
 class NBake {
     ver() {
-        return 'v2.04.022 beta';
+        return 'v2.04.023 beta';
     }
 }
 exports.NBake = NBake;
@@ -147,6 +147,8 @@ class Meta {
     constructor(path) {
         this.path = path;
         let y = yaml.load(fs.readFileSync(path + '/meta.yaml'));
+        if (!y)
+            y = {};
         this.props = y;
         let keys = Object.keys(y);
         if (keys.includes('jdata'))
