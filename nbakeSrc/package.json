@@ -7,7 +7,7 @@
 		"nbake": "nbake.js",
 		"nbake-cli": "nbake.js"
 	},
-	"license": "APACHE2",
+	"license": "GPL3",
 	"author": "http://github.com/topseed/nbake",
 	"bugs": "http://github.com/topseed/nbake",
 	"homepage": "http://github.com/topseed/nbake",
@@ -37,11 +37,8 @@
 		"pug": "^2.0.3",
 		"riot-compiler": "^3.4.0",
 		"sitemap": "^1.13.0",
-		"tracer": "^0.8.12",
+		"tracer": "^0.8.12"
 
-		"express": "^4.16.3",
-		"formidable": "^1.2.1",
-		"image-downloader": "^3.3.0"
 	},
 	"devDependencies": {
 
