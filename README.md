@@ -11,3 +11,6 @@ There is supper set project (Apache 2 license) that allows you to build in the c
  - http://github.com/topseed/nbake-admin
 Admin super set requires deployment to AWS S3.
 You can use FTP (ex: CyberDuck) in nbake cli to deploy to AWS S3 (with an 'IAM' id, key, secret and bucket name). It is recomended that you start using that project as well as soon as you deel comfortable with nbake.
+
+Note that this is GPL license, so adding script features or jstransform must also be open source.
+If you want an apache version, start with the nbake admin project.
