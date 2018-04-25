@@ -4,7 +4,9 @@
  // https://jsfiddle.net/muicss/4791kt3w
  function require(bundleIds, callbackFn) {
 	bundleIds.forEach(function(bundleId) {
-		if (!loadjs.isDefined(bundleId)) loadjs(bundles[bundleId], bundleId)
+		if (!loadjs.isDefined(bundleId)) loadjs(bundles[bundleId], bundleId, {
+			async: false //required due to loadjs bug with bundles
+		})
 	})
 	loadjs.ready(bundleIds, callbackFn)
 }

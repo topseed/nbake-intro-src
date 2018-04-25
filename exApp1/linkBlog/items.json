@@ -13,7 +13,7 @@
       "author": "Travis Neilson",
       "date_modified": 1522597131,
       "tags": null,
-      "jdata": "items.json",
+      "include": "items.json",
       "local_url": "180401b_jade_bro"
     },
     {
