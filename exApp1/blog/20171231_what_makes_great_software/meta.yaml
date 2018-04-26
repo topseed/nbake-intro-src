@@ -1,0 +1,18 @@
+basedir: ../../
+
+id: https://blog.nbake.org/blog/20171231_what_makes_great_software
+url: /blog/20171231_what_makes_great_software
+title: What Makes Great Software
+created: December 31, 2017
+date_published: '2017-12-31T11:00:00-08:00'
+content_html: In this article, we talk about what makes great software.
+image: /blog/20171231_what_makes_great_software/assets/img/beach768.jpg
+author:
+  name: Vic Cekvenich
+  avatar: /assets/img/vic.jpg
+tags:
+- management
+- development
+- trinity
+
+

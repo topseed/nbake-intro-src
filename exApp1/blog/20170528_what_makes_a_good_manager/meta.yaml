@@ -1,0 +1,18 @@
+basedir: ../../
+# http://jsonfeed.org/version/1
+
+id: https://blog.nbake.org/blog/20170528_what_makes_a_good_manager
+url: /blog/20170528_what_makes_a_good_manager
+title: What Makes A Good Manager
+created: May 28, 2017
+date_published: '2017-05-28T15:00:00-08:00'
+content_html: In this article, we talk about what makes a good manager.
+image: /blog/20170528_what_makes_a_good_manager/assets/img/beach768.jpg
+author:
+  name: Vic Cekvenich
+  avatar: /assets/img/vic.jpg
+tags:
+- management
+
+
+

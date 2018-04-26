@@ -1,0 +1,19 @@
+basedir: ../../
+
+id: https://blog.nbake.org/blog/20180202_what_makes_great_ui
+url: /blog/20180202_what_makes_great_ui
+title: What Makes Great UI
+created: February 2, 2018
+date_published: '2018-02-02T09:00:00-08:00'
+content_html: In this article, we talk about what makes great UI.
+image: /blog/20180202_what_makes_great_ui/assets/img/city768.jpg
+author:
+  name: Wolfgang Gehner
+  avatar: /assets/img/wolf.jpg
+tags:
+- design
+- development
+- trinity
+
+
+
