@@ -8,7 +8,7 @@ const pug = require('pug');
 const logger = require('tracer').console();
 class NBake {
     ver() {
-        return 'v2.04.026 alpha';
+        return 'v2.04.027 alpha';
     }
 }
 exports.NBake = NBake;
@@ -79,31 +79,35 @@ class Bake {
         console.log(' processing: ' + this.dir);
     }
     bake() {
-        if (!fs.existsSync(this.dir + '/meta.yaml'))
-            return ' ';
         process.chdir(this.dir);
-        let m = new Meta(this.dir);
-        this.cli(this.dir, m);
+        this.cli(this.dir);
         if (!fs.existsSync(this.dir + '/index.pug'))
             return ' ';
+        if (!fs.existsSync(this.dir + '/meta.yaml'))
+            return ' ';
+        let m = new Meta(this.dir);
         let html = pug.renderFile(this.dir + '/index.pug', m.getAll());
         let fn = this.dir + '/index.html';
         fs.writeFileSync(fn, html);
         return ' OK ';
     }
-    cli(dir, m) {
+    cli(dir) {
         const files = FileHound.create()
             .depth(0)
             .paths(dir)
             .ext('pug')
             .match('*_d.pug')
             .findSync();
+        let obj = {};
+        if (fs.existsSync(this.dir + '/meta.yaml')) {
+            let m = new Meta(this.dir);
+            obj = m.getAll();
+        }
         for (let fn of files) {
-            this.cliEach(fn, m);
+            this.cliEach(fn, obj);
         }
     }
-    cliEach(fn, m) {
-        let obj = m.getAll();
+    cliEach(fn, obj) {
         let foo = this.getNameFromFileName(fn);
         console.log(' _d', foo);
         obj.name = foo;
@@ -156,7 +160,7 @@ class Items {
     itemize() {
         console.log('Itemizing: ' + this.dir);
         const rootDir = this.dir;
-        let fn = rootDir + '/meta.yaml';
+        let fn = rootDir + '/meta_i.yaml';
         let y = yaml.load(fs.readFileSync((fn)));
         console.log(y);
         Items.clean(y);

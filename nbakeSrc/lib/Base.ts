@@ -17,7 +17,7 @@ const logger = require('tracer').console()
 
 export class NBake {
 	ver() {
-		return 'v2.04.026 alpha'
+		return 'v2.04.027 alpha'
 	}
 }
 
@@ -95,16 +95,17 @@ export class Bake {
 
 	bake():string {
 
-		if (!fs.existsSync(this.dir+'/meta.yaml'))
-			return ' '
+
 
 		process.chdir(this.dir)
-		let m = new Meta(this.dir)
 
-		this.cli(this.dir, m)//process pug-cli
+		this.cli(this.dir)//process pug-cli
 
 		if (!fs.existsSync(this.dir+'/index.pug'))
 			return ' '
+		if (!fs.existsSync(this.dir+'/meta.yaml'))
+			return ' '
+		let m = new Meta(this.dir)
 
 		//static data binding:
 		let html = pug.renderFile(this.dir+'/index.pug', m.getAll() )
@@ -115,7 +116,7 @@ export class Bake {
 		return ' OK '
 	}//()
 
-	cli(dir, m) {
+	cli(dir) {
 		//logger.trace(dir)
 		const files = FileHound.create()
 			.depth(0)
@@ -124,14 +125,19 @@ export class Bake {
 			.match('*_d.pug')
 			.findSync()
 
+		let obj = {}
+		if (fs.existsSync(this.dir+'/meta.yaml')) {
+			let m = new Meta(this.dir)
+			obj = m.getAll()
+		}
+
 		//logger.trace(files)
 		for (let fn of files) {
-			this.cliEach(fn, m)
+			this.cliEach(fn, obj)
 		}
 	}//()
 
-	cliEach(fn, m) { // dynamic data binding
-		let obj = m.getAll()
+	cliEach(fn, obj) { // dynamic data binding
 		let foo = this.getNameFromFileName(fn)
 		console.log(' _d' ,foo)
 		obj.name = foo
@@ -199,7 +205,7 @@ export class Items {
 
 		const rootDir:string = this.dir
 		// header
-		let fn:string = rootDir +'/meta.yaml'
+		let fn:string = rootDir +'/meta_i.yaml'
 		let y = yaml.load(fs.readFileSync((fn)))
 		console.log(y)
 
