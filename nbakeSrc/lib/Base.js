@@ -98,7 +98,6 @@ class Bake {
             .ext('pug')
             .match('*_d.pug')
             .findSync();
-        logger.trace(files);
         for (let fn of files) {
             this.cliEach(fn, m);
         }
@@ -138,15 +137,17 @@ class Items {
     addAnItem(dn) {
         console.log(' ' + dn);
         let y = yaml.load(fs.readFileSync(dn + '/meta.yaml'));
+        if (!y)
+            return;
         if (y.hasOwnProperty('publish')) {
             if (y.publish == false) {
                 console.log('  skipped');
                 return;
             }
         }
-        delete y.basedir;
+        Items.clean(y);
         let dl = this.dir.length;
-        y.local_url = dn.substring(dl + 1);
+        y.id = dn.substring(dl + 1);
         if (!this.feed.items)
             this.feed.items = [];
         this.feed.items.push(y);
@@ -158,7 +159,7 @@ class Items {
         let fn = rootDir + '/meta_d.yaml';
         let y = yaml.load(fs.readFileSync((fn)));
         console.log(y);
-        delete y.basedir;
+        Items.clean(y);
         this.feed = y;
         for (let val of this.dirs) {
             this.addAnItem(val);

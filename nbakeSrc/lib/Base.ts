@@ -92,10 +92,12 @@ export class Bake {
 		this.dir=dir
 		console.log(' processing: '+ this.dir)
 	}
+
 	bake():string {
+
 		if (!fs.existsSync(this.dir+'/meta.yaml'))
 			return ' '
-			
+
 		process.chdir(this.dir)
 		let m = new Meta(this.dir)
 
@@ -122,7 +124,7 @@ export class Bake {
 			.match('*_d.pug')
 			.findSync()
 
-		logger.trace(files)
+		//logger.trace(files)
 		for (let fn of files) {
 			this.cliEach(fn, m)
 		}
@@ -157,7 +159,6 @@ export class Bake {
 }//class
 
 export class Items {
-	// http://jsonfeed.org/version/1
 	dir:string
 	dirs // array
 	feed //rss
@@ -172,6 +173,7 @@ export class Items {
 		console.log(' '+ dn)
 		let y = yaml.load(fs.readFileSync(dn+'/meta.yaml'))
 		//logger.trace(y)
+		if(!y) return
 		if(y.hasOwnProperty('publish')) {
 			if(y.publish==false) {
 				console.log('  skipped')
@@ -179,10 +181,10 @@ export class Items {
 			}
 		}//outer
 
-		delete y.basedir
+		Items.clean(y)
 
 		let dl = this.dir.length
-		y.local_url = dn.substring(dl+1)
+		y.id = dn.substring(dl+1)
 
 		//logger.trace(y)
 		if(!this.feed.items)
@@ -201,7 +203,7 @@ export class Items {
 		let y = yaml.load(fs.readFileSync((fn)))
 		console.log(y)
 
-		delete y.basedir
+		Items.clean(y)
 
 		this.feed = y
 
