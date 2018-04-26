@@ -1,3 +1,4 @@
+import { TSInterfaceDeclaration } from "babel-types";
 
 
 declare var module: any
@@ -92,16 +93,16 @@ export class Bake {
 		console.log(' processing: '+ this.dir)
 	}
 	bake():string {
-		// if both
 		if (!fs.existsSync(this.dir+'/meta.yaml'))
 			return ' '
-		if (!fs.existsSync(this.dir+'/index.pug'))
-			return ' '
-
+			
 		process.chdir(this.dir)
 		let m = new Meta(this.dir)
 
 		this.cli(this.dir, m)//process pug-cli
+
+		if (!fs.existsSync(this.dir+'/index.pug'))
+			return ' '
 
 		//static data binding:
 		let html = pug.renderFile(this.dir+'/index.pug', m.getAll() )
@@ -111,7 +112,9 @@ export class Bake {
 		//console.log(' processed: '+ this.dir)
 		return ' OK '
 	}//()
+
 	cli(dir, m) {
+		//logger.trace(dir)
 		const files = FileHound.create()
 			.depth(0)
 			.paths(dir)
@@ -119,20 +122,23 @@ export class Bake {
 			.match('*_d.pug')
 			.findSync()
 
+		logger.trace(files)
 		for (let fn of files) {
 			this.cliEach(fn, m)
 		}
 	}//()
+
 	cliEach(fn, m) { // dynamic data binding
 		let obj = m.getAll()
 		let foo = this.getNameFromFileName(fn)
-		console.log(' _d:' ,foo)
+		console.log(' _d' ,foo)
 		obj.name = foo
 		obj.compileDebug = false
 		let js = pug.compileFileClient(fn, obj )
 		//logger.trace(js)
 		let pos = fn.lastIndexOf('.')
 		fn = fn.substring(0,pos) + '.js'
+		console.log(' _d:', fn)
 		fs.writeFileSync(fn, js)
 
 	}//()

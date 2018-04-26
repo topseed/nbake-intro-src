@@ -81,11 +81,11 @@ class Bake {
     bake() {
         if (!fs.existsSync(this.dir + '/meta.yaml'))
             return ' ';
-        if (!fs.existsSync(this.dir + '/index.pug'))
-            return ' ';
         process.chdir(this.dir);
         let m = new Meta(this.dir);
         this.cli(this.dir, m);
+        if (!fs.existsSync(this.dir + '/index.pug'))
+            return ' ';
         let html = pug.renderFile(this.dir + '/index.pug', m.getAll());
         let fn = this.dir + '/index.html';
         fs.writeFileSync(fn, html);
@@ -98,6 +98,7 @@ class Bake {
             .ext('pug')
             .match('*_d.pug')
             .findSync();
+        logger.trace(files);
         for (let fn of files) {
             this.cliEach(fn, m);
         }
@@ -105,12 +106,13 @@ class Bake {
     cliEach(fn, m) {
         let obj = m.getAll();
         let foo = this.getNameFromFileName(fn);
-        console.log(' _d:', foo);
+        console.log(' _d', foo);
         obj.name = foo;
         obj.compileDebug = false;
         let js = pug.compileFileClient(fn, obj);
         let pos = fn.lastIndexOf('.');
         fn = fn.substring(0, pos) + '.js';
+        console.log(' _d:', fn);
         fs.writeFileSync(fn, js);
     }
     getNameFromFileName(filename) {
