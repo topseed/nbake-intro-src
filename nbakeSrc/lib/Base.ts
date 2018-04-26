@@ -17,7 +17,7 @@ const logger = require('tracer').console()
 
 export class NBake {
 	ver() {
-		return 'v2.04.025 alpha'
+		return 'v2.04.026 alpha'
 	}
 }
 
@@ -199,7 +199,7 @@ export class Items {
 
 		const rootDir:string = this.dir
 		// header
-		let fn:string = rootDir +'/meta_d.yaml'
+		let fn:string = rootDir +'/meta.yaml'
 		let y = yaml.load(fs.readFileSync((fn)))
 		console.log(y)
 
@@ -225,8 +225,6 @@ export class Items {
 	}
 
 }//class
-
-
 
 export class Tag {
 	dir:string

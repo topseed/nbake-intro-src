@@ -8,7 +8,7 @@ const pug = require('pug');
 const logger = require('tracer').console();
 class NBake {
     ver() {
-        return 'v2.04.025 alpha';
+        return 'v2.04.026 alpha';
     }
 }
 exports.NBake = NBake;
@@ -156,7 +156,7 @@ class Items {
     itemize() {
         console.log('Itemizing: ' + this.dir);
         const rootDir = this.dir;
-        let fn = rootDir + '/meta_d.yaml';
+        let fn = rootDir + '/meta.yaml';
         let y = yaml.load(fs.readFileSync((fn)));
         console.log(y);
         Items.clean(y);
