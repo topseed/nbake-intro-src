@@ -8,7 +8,7 @@ const pug = require('pug');
 const logger = require('tracer').console();
 class NBake {
     ver() {
-        return 'v2.04.027 alpha';
+        return 'v2.04.028 alpha';
     }
 }
 exports.NBake = NBake;
@@ -151,7 +151,7 @@ class Items {
         }
         Items.clean(y);
         let dl = this.dir.length;
-        y.id = dn.substring(dl + 1);
+        y.url = dn.substring(dl + 1);
         if (!this.feed.items)
             this.feed.items = [];
         this.feed.items.push(y);

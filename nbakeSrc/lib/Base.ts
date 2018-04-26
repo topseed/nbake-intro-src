@@ -17,7 +17,7 @@ const logger = require('tracer').console()
 
 export class NBake {
 	ver() {
-		return 'v2.04.027 alpha'
+		return 'v2.04.028 alpha'
 	}
 }
 
@@ -190,7 +190,7 @@ export class Items {
 		Items.clean(y)
 
 		let dl = this.dir.length
-		y.id = dn.substring(dl+1)
+		y.url = dn.substring(dl+1)
 
 		//logger.trace(y)
 		if(!this.feed.items)
