@@ -1,13 +1,9 @@
 extends /plugin/_layout
 
 block head
+	meta(name='description', content=title)
 	title #{title}
 
 block main
 	.ui.container
-		img.article.ui.rounded.image(src=url+'/'+image)
-		.article.ui.segments
-			.ui.segment
-				p
-				.ui.text.container
-					include:marked article.md
+		include article
