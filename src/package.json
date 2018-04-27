@@ -36,10 +36,10 @@
 		"jstransformer-marked": "^1.0.3",
 		"pug": "^2.0.3",
 		"riot-compiler": "^3.4.0",
-		"sitemap": "^1.13.0",
 		"tracer": "^0.8.12"
 	},
 	"devDependencies": {
-		"express": "^4.16.3"
+		"express": "^4.16.3",
+		"sitemap": "^1.13.0"
 	}
 }
