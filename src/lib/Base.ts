@@ -17,7 +17,7 @@ const logger = require('tracer').console()
 
 export class NBake {
 	ver() {
-		return 'v2.04.028 alpha'
+		return 'v2.04.029 alpha'
 	}
 }
 
@@ -169,6 +169,15 @@ export class Items {
 	dirs // array
 	feed //rss
 	constructor(dir:string) {
+
+		let fn:string = dir +'/meta_i.yaml'
+		// if it does not exist, go up a level
+		if (!fs.existsSync(fn)) {
+			let n = dir.lastIndexOf('/')
+			dir = dir.substring(0,n)
+			console.log(' using ',dir)
+		}
+
 		this.dir=dir
 		let d = new Dirs(dir)
 		this.dirs =d.get()

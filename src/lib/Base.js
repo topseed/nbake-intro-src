@@ -133,6 +133,12 @@ class Bake {
 exports.Bake = Bake;
 class Items {
     constructor(dir) {
+        let fn = dir + '/meta_i.yaml';
+        if (!fs.existsSync(fn)) {
+            let n = dir.lastIndexOf('/');
+            dir = dir.substring(0, n);
+            console.log(' using ', dir);
+        }
         this.dir = dir;
         let d = new Dirs(dir);
         this.dirs = d.get();
