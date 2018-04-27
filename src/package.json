@@ -1,6 +1,6 @@
 {
 	"name": "nbake",
-	"version": "2.04.029",
+	"version": "2.04.030",
 	"description": "Bake a pug recursively, including any binding info",
 	"main": "nbake.js",
 	"bin": {
@@ -40,8 +40,6 @@
 		"tracer": "^0.8.12"
 	},
 	"devDependencies": {
-		"express": "^4.16.3",
-		"formidable": "^1.2.1",
-		"image-downloader": "^3.3.0"
+		"express": "^4.16.3"
 	}
 }

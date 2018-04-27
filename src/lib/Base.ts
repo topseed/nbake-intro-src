@@ -17,7 +17,7 @@ const logger = require('tracer').console()
 
 export class NBake {
 	ver() {
-		return 'v2.04.029 alpha'
+		return 'v2.04.030'
 	}
 }
 
@@ -94,8 +94,6 @@ export class Bake {
 	}
 
 	bake():string {
-
-
 
 		process.chdir(this.dir)
 
@@ -219,7 +217,8 @@ export class Items {
 		console.log(y)
 
 		Items.clean(y)
-
+		y.nbVer = new NBake().ver()
+		y.note = 'This is statically serveed and visible publicly. Check dbake if you want something different'
 		this.feed = y
 
 		for (let val of this.dirs) {
