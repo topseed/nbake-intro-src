@@ -62,6 +62,7 @@ loadjs.ready(['css', 'cssJs', 'site'], function () {
 	},1)
 })
 
+console.log('ver 1.04.28')
 // usage: ////////////////////////////////////////////////////////////////////
 loadjs.ready(['core'], function () {// load data
 	console.log('core done', Date.now()-_start)
@@ -73,3 +74,14 @@ loadjs.ready(['style'], function () {// 'show' page, ex: unhide
 	console.log('style done', Date.now()-_start)
 })
 
+// util: /////////////////////////////////////////////////////////////////////
+function getUrlVars() {
+	var vars = [], hash
+	var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&')
+	for(var i = 0; i < hashes.length; i++) {
+		hash = hashes[i].split('=')
+		vars.push(hash[0])
+		vars[hash[0]] = hash[1]
+	}
+	return vars
+}

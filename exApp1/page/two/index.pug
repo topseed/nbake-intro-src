@@ -13,16 +13,16 @@ block main
 	include part2.pug
 
 	script.
-		loadjs('pinc_d.js', 'template', {async: false})
+		loadjs('pinc_d.js', 'binding', {async: false})
 		
-		loadjs.ready(['site','template'], function () {
+		loadjs.ready(['site','binding'], function () {
 			console.log('page 2')
 			var data = {
 				'myNum': Math.floor(Math.random() * 20)
 			}
 
 			// dynamic pug binding example
-			//- Render the pinc_p.js template with data
-			//- Naming convention:  pinc_p.js -> pincPTemplate
+			//- Render the pinc_p.js binding with data
+			//- Naming convention:  pinc_p.js -> pincPbinding
 			$('#here').html(pincDBind(data))
 		})
