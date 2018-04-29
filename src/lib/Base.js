@@ -8,7 +8,7 @@ const pug = require('pug');
 const logger = require('tracer').console();
 class NBake {
     ver() {
-        return 'v2.04.030';
+        return "v2.05.01";
     }
 }
 exports.NBake = NBake;
@@ -87,6 +87,8 @@ class Bake {
             return ' ';
         let m = new Meta(this.dir);
         let html = pug.renderFile(this.dir + '/index.pug', m.getAll());
+        let ver = '<!- nB ' + new NBake().ver() + ' -->';
+        html = html.replace(Bake.bodyHtml, ver + Bake.bodyHtml);
         let fn = this.dir + '/index.html';
         fs.writeFileSync(fn, html);
         return ' OK ';
@@ -130,6 +132,7 @@ class Bake {
         }) + 'Bind';
     }
 }
+Bake.bodyHtml = '</body></html>';
 exports.Bake = Bake;
 class Items {
     constructor(dir) {

@@ -17,7 +17,7 @@ const logger = require('tracer').console()
 
 export class NBake {
 	ver() {
-		return 'v2.04.030'
+		return "v2.05.01"
 	}
 }
 
@@ -88,6 +88,8 @@ export class Meta {
 
 export class Bake {
 	dir:string
+	static bodyHtml = '</body></html>'
+
 	constructor(dir:string) {
 		this.dir=dir
 		console.log(' processing: '+ this.dir)
@@ -107,6 +109,9 @@ export class Bake {
 
 		//static data binding:
 		let html = pug.renderFile(this.dir+'/index.pug', m.getAll() )
+
+		let ver = '<!- nB ' + new NBake().ver() + ' -->'
+		html = html.replace(Bake.bodyHtml, ver+Bake.bodyHtml)
 
 		let fn = this.dir + '/index.html'
 		fs.writeFileSync(fn, html)

@@ -8,6 +8,7 @@ image: assets/img/light768.jpg
 author:
   name: Wolfgang Gehner
   avatar: /assets/img/wolf.jpg
+read_minutes: 5
 tags:
 - design
 - management

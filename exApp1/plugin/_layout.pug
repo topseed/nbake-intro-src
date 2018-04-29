@@ -7,6 +7,8 @@ html
 			html { opacity: 0.05; }
 		script.
 			let _start=Date.now()
+			//- see https://github.com/muicss/loadjs
+
 	body
 		script(src='//cdn.jsdelivr.net/npm/loadjs@3.5.4/dist/loadjs.min.js')
 		script(src='/assets/js/setup.js')
@@ -20,9 +22,6 @@ html
 
 		link(rel='stylesheet', href='/assets/Semantic-UI/dist/semantic.min.css', onload='cssLoaded()')
 		script.
-			//above is for fast loading
-			//- see https://github.com/muicss/loadjs
-
 			console.log('layout')
 
 			loadjs.ready('site', function() {

@@ -34,8 +34,7 @@ loadjs.ready(['promise','fetch'], function () {
 	loadjs([
 		'//cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js'
 		,'//cdn.jsdelivr.net/npm/signals@1.0.0/dist/signals.min.js'
-		//,'//cdn.jsdelivr.net/npm/dayjs@1.5.11/dist/dayjs.min.js'
-		//, '//cdn.jsdelivr.net/npm/intersection-observer@0.5.0/intersection-observer.js'
+		//, '//cdn.jsdelivr.net/npm/riot@3.9.1/riot.js'
 	], 'core' /* bundle ID */, {
 		async: false //required due to loadjs bug with bundles
 	})
@@ -43,7 +42,9 @@ loadjs.ready(['promise','fetch'], function () {
 loadjs.ready(['core'], function () {
 	//window['SITE'] = new signals.Signal() //site events
 	loadjs([ '/assets/Semantic-UI/dist/components/sidebar.min.js'
-		], 'cssJs', {
+		//,'//cdn.jsdelivr.net/npm/dayjs@1.5.11/dist/dayjs.min.js'
+		//, '//cdn.jsdelivr.net/npm/intersection-observer@0.5.0/intersection-observer.js'
+	], 'cssJs', {
 		async: false //required due to loadjs bug with bundles
 	})
 	$( document ).ready(function() {
@@ -62,7 +63,7 @@ loadjs.ready(['css', 'cssJs', 'site'], function () {
 	},1)
 })
 
-console.log('ver 1.04.28')
+console.log('setup', "v2.05.01")
 // usage: ////////////////////////////////////////////////////////////////////
 loadjs.ready(['core'], function () {// load data
 	console.log('core done', Date.now()-_start)

@@ -8,6 +8,7 @@ image: assets/img/beach768.jpg
 author:
   name: Vic Cekvenich
   avatar: /assets/img/vic.jpg
+read_minutes: 6
 tags:
 - management
 

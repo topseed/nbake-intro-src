@@ -8,6 +8,7 @@ image: assets/img/city768.jpg
 author:
   name: Wolfgang Gehner
   avatar: /assets/img/wolf.jpg
+read_minutes: 4
 tags:
 - design
 - development
