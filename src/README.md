@@ -1,13 +1,9 @@
 
 # nbake
 
-		nbake .
+You can customize jstrsnformers.
 
-makes current folder's pug recursively.
+GPL3.
 
-It requires meta.yaml in each folder. Ex:
-
-		title = Oh hi
-		basedir = ..
-
-more - https://github.com/topseed/nbake-user
+But used in meta-admin, it is Apache 2.
+So extend meta-admin.

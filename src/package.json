@@ -8,12 +8,12 @@
 		"nbake-cli": "nbake.js"
 	},
 	"license": "GPL3",
-	"author": "https://github.com/topseed/nbake-user",
-	"bugs": "https://github.com/topseed/nbake-user",
-	"homepage": "https://github.com/topseed/nbake-user",
+	"author": "http://github.com/topseed",
+	"bugs": "http://github.com/topseed",
+	"homepage": "http://github.com/topseed",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/topseed/nbake-user"
+		"url": "http://github.com/topseed",
 	},
 	"keywords": [
 		"nbake",

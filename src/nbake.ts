@@ -25,8 +25,8 @@ function version() {
 	console.log('usage: nbake .')
 	console.log(' or: nbake any_dir')
 	console.log(' for hello world app: nbake -l')
-	console.log(' to process items with meta to items.json: nbake -i')
-	console.log(' for an example meta app: nbake -m')
+	console.log(' to process items on meta_i to items.json: nbake -i')
+	console.log(' for an example meta admin: nbake -m')
 	console.log(' for full docs and more optional arguments check: - http://github.com/topseed ')
 
 	process.exit()
@@ -52,6 +52,13 @@ function unzip1() {
 	let src:string =__dirname+ '/exApp1.zip'
 	let zip = new AdmZip(src)
 	zip.extractAllTo(cwd +'/helloApp1', /*overwrite*/true)
+	console.log('extracted hello world, check it, bake it')
+	process.exit()
+}
+function unzip2() {
+	let src:string =__dirname+ '/exMeta.zip'
+	let zip = new AdmZip(src)
+	zip.extractAllTo(cwd +'/exMeta', /*overwrite*/true)
 	console.log('extracted a sample, check it, bake it')
 	process.exit()
 }
@@ -113,8 +120,10 @@ if(argsParsed.tag)
 	tag(arg)
 else if(argsParsed.items)
 	itemize(arg)
-else if(argsParsed.hello)
+else if(argsParsed.hello1)
 	unzip1()
+else if(argsParsed.meta2)
+	unzip2()
 else if(!arg)
 	version()
 else
