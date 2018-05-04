@@ -17,7 +17,7 @@ const logger = require('tracer').console()
 
 export class NBake {
 	ver() {
-		return "v2.05.01"
+		return "v2.05.02"
 	}
 }
 
