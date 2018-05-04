@@ -15,14 +15,16 @@ function version() {
     console.log('from ' + __dirname);
     console.log('usage: nbake .');
     console.log(' or: nbake any_dir');
-    console.log(' for an example app: nbake -x');
-    console.log(' to process items with meta to items.json: nbake -i');
-    console.log(' for full docs and more optional arguments check: - http://github.com/topseed/topseed-nbake ');
+    console.log(' for hello world app: nbake -l');
+    console.log(' to process items on meta_i to items.json: nbake -i');
+    console.log(' for an example meta admin: nbake -m');
+    console.log(' for full docs and more optional arguments check: - http://github.com/topseed ');
     process.exit();
 }
 const optionDefinitions = [
     { name: 'nbake', defaultOption: true },
-    { name: 'example1', alias: 'x', type: Boolean },
+    { name: 'meta2', alias: 'm', type: Boolean },
+    { name: 'hello1', alias: 'l', type: Boolean },
     { name: 'items', alias: 'i', type: Boolean },
     { name: 'tag', alias: 't', type: Boolean },
     { name: 'upload', alias: 'u', type: Boolean },
@@ -34,7 +36,14 @@ console.log();
 function unzip1() {
     let src = __dirname + '/exApp1.zip';
     let zip = new AdmZip(src);
-    zip.extractAllTo(cwd + '/exApp1', true);
+    zip.extractAllTo(cwd + '/helloApp1', true);
+    console.log('extracted hello world, check it, bake it');
+    process.exit();
+}
+function unzip2() {
+    let src = __dirname + '/exMeta.zip';
+    let zip = new AdmZip(src);
+    zip.extractAllTo(cwd + '/exMeta', true);
     console.log('extracted a sample, check it, bake it');
     process.exit();
 }
@@ -82,8 +91,10 @@ if (argsParsed.tag)
     tag(arg);
 else if (argsParsed.items)
     itemize(arg);
-else if (argsParsed.example1)
+else if (argsParsed.hello1)
     unzip1();
+else if (argsParsed.meta2)
+    unzip2();
 else if (!arg)
     version();
 else

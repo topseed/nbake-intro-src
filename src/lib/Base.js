@@ -8,7 +8,7 @@ const pug = require('pug');
 const logger = require('tracer').console();
 class NBake {
     ver() {
-        return "v2.05.01";
+        return "v2.05.03";
     }
 }
 exports.NBake = NBake;

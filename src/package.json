@@ -1,6 +1,6 @@
 {
 	"name": "nbake",
-	"version": "2.05.02",
+	"version": "2.05.03",
 	"description": "Bake a pug recursively, including any static or dynmic binding info",
 	"main": "nbake.js",
 	"bin": {
@@ -13,7 +13,7 @@
 	"homepage": "http://github.com/topseed",
 	"repository": {
 		"type": "git",
-		"url": "http://github.com/topseed",
+		"url": "http://github.com/topseed"
 	},
 	"keywords": [
 		"nbake",
