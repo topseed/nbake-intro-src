@@ -60,7 +60,7 @@ function cssLoaded() {// called by the style sheet in layout
 loadjs.ready(['css', 'cssJs', 'site'], function () {
 	setTimeout(function(){
 		loadjs.done('style')
-	},1)
+	},1000/60)
 })
 
 console.log('setup', "v2.05.01")
