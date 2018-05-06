@@ -1,12 +1,12 @@
 first-tag
-	h2 Riot.js
-	p
-	p {opts.num}
-	p {num}
-	p
+	p oh hi
+	p { num }
 
 	script.
+		//	http://bleedingedgepress.com/building-apps-with-riot
+		console.log('loaded')
+
 		doSomething(arg) {
 			console.log('XXX ', arg)
-			this.update()
+			this.update({num: arg})
 		}

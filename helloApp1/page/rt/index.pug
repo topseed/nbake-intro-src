@@ -10,10 +10,12 @@ block main
 	br
 	p
 	.ui.text.container
-		p oh hi
+		h2 #{title}
 		first-tag
 
 	script.
+		// line 8 loads the tag
+		// nbake -t .
 		let firstTag = riot.mount('first-tag')[0] // the first tag
-		firstTag.doSomething({num:20})
+		firstTag.doSomething(21)
 

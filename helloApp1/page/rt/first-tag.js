@@ -1,7 +1,10 @@
 
-riot.tag2('first-tag', '<h2>Riot.js</h2> <p></p> <p>{opts.num}</p> <p>{num}</p> <p></p>', '', '', function(opts) {
+riot.tag2('first-tag', '<p>oh hi</p> <p>{num}</p>', '', '', function(opts) {
+
+    console.log('loaded')
+
     this.doSomething = function(arg) {
     	console.log('XXX ', arg)
-    	this.update()
+    	this.update({num: arg})
     }.bind(this)
 });
