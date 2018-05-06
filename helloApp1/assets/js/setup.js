@@ -34,8 +34,8 @@ loadjs.ready(['promise','fetch'], function () {
 	loadjs([
 		'//cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js'
 		,'//cdn.jsdelivr.net/npm/signals@1.0.0/dist/signals.min.js'
-	], 'core' /* bundle ID */, {
-		async: false //required due to loadjs bug with bundles
+	], 'core', { // bundle ID
+			async: false //required due to loadjs bug with bundles
 	})
 })
 loadjs.ready(['core'], function () {
@@ -63,7 +63,7 @@ loadjs.ready(['css', 'cssJs', 'site'], function () {
 	},1000/60)
 })
 
-console.log('setup', "v2.05.01")
+console.log('setup', "v2.05.02")
 // usage: ////////////////////////////////////////////////////////////////////
 loadjs.ready(['core'], function () {// load data
 	console.log('core done', Date.now()-_start)
