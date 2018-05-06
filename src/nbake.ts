@@ -25,8 +25,9 @@ function version() {
 	console.log('usage: nbake .')
 	console.log(' or: nbake any_dir')
 	console.log(' for hello world app: nbake -l')
-	console.log(' to process items on meta_i to items.json: nbake -i')
-	console.log(' for an example meta admin: nbake -m')
+	console.log(' to process tags on _tag.pug: nbake -t .')
+	console.log(' to process items on meta_i to items.json: nbake -i .')
+	console.log(' for an example meta admin: nbake -x')
 	console.log(' for full docs and more optional arguments check: - http://github.com/topseed ')
 
 	process.exit()
@@ -35,9 +36,9 @@ function version() {
 // args: //////////////////////////////////////////////////////////////////////////////////////////////////////
 const optionDefinitions = [
 	{ name: 'nbake', defaultOption: true},
-	{ name: 'meta2', alias: 'm', type: Boolean },
+	{ name: 'meta2', alias: 'x', type: Boolean },
 	{ name: 'hello1', alias: 'l', type: Boolean },
-	{ name: 'items',     alias: 'i', type: Boolean },
+	{ name: 'items',    alias: 'i', type: Boolean },
 	{ name: 'tag',      alias: 't', type: Boolean },
 	{ name: 'upload',   alias: 'u', type: Boolean },
 	{ name: 'download', alias: 'd', type: Boolean }

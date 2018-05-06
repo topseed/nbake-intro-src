@@ -1,0 +1,17 @@
+extends /plugin/_layout
+//- App Shell
+
+block head
+	title #{title}
+
+block main
+	p
+	.ui.text.container
+		first-tag
+
+	script.
+		loadjs.ready('site', function () {
+			let firstTag = riot.mount('first-tag')[0] // the first tag
+			firstTag.doSomething({num:20})
+		})
+

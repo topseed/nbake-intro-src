@@ -1,5 +1,5 @@
 cls
 call tsc
-ts-node nbake.ts -i ../exApp1/blog/20170425_what_makes_good_ui
-rem ts-node nbake.ts ../exApp1/page
-rem ts-node nbake.ts ../exApp1/blog
+rem ts-node nbake.ts -i ../helloApp1/blog/20170425_what_makes_good_ui
+ts-node nbake.ts -t ../helloApp1/page/rt
+rem ts-node nbake.ts ../helloApp1/blog
