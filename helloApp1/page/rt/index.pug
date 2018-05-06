@@ -5,13 +5,15 @@ block head
 	title #{title}
 
 block main
+	script(src='first-tag.js')
+	p
+	br
 	p
 	.ui.text.container
+		p oh hi
 		first-tag
 
 	script.
-		loadjs.ready('site', function () {
-			let firstTag = riot.mount('first-tag')[0] // the first tag
-			firstTag.doSomething({num:20})
-		})
+		let firstTag = riot.mount('first-tag')[0] // the first tag
+		firstTag.doSomething({num:20})
 
