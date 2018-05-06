@@ -34,7 +34,6 @@ loadjs.ready(['promise','fetch'], function () {
 	loadjs([
 		'//cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js'
 		,'//cdn.jsdelivr.net/npm/signals@1.0.0/dist/signals.min.js'
-		//, '//cdn.jsdelivr.net/npm/riot@3.9.1/riot.js'
 	], 'core' /* bundle ID */, {
 		async: false //required due to loadjs bug with bundles
 	})
@@ -42,8 +41,9 @@ loadjs.ready(['promise','fetch'], function () {
 loadjs.ready(['core'], function () {
 	//window['SITE'] = new signals.Signal() //site events
 	loadjs([ '/assets/Semantic-UI/dist/components/sidebar.min.js'
+		//,'//cdn.jsdelivr.net/npm/intersection-observer@0.5.0/intersection-observer.js'
+		//,'/assets/js/tsrouter.js'
 		//,'//cdn.jsdelivr.net/npm/dayjs@1.5.11/dist/dayjs.min.js'
-		//, '//cdn.jsdelivr.net/npm/intersection-observer@0.5.0/intersection-observer.js'
 	], 'cssJs', {
 		async: false //required due to loadjs bug with bundles
 	})
@@ -73,6 +73,14 @@ loadjs.ready(['site'], function () {// do nav, signal is ready, but not style
 })
 loadjs.ready(['style'], function () {// 'show' page, ex: unhide
 	console.log('style done', Date.now()-_start)
+})
+
+window.addEventListener('pageshow', function(event) {
+	console.log('pageshow:', event.timeStamp)
+})
+
+window.addEventListener('load', function(event) {
+	console.log('load:', event.timeStamp)
 })
 
 // util: /////////////////////////////////////////////////////////////////////
