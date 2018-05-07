@@ -1,6 +1,6 @@
 {
 	"name": "nbake",
-	"version": "2.05.03",
+	"version": "2.05.07",
 	"description": "Bake a pug recursively, including any static or dynmic binding info",
 	"main": "nbake.js",
 	"bin": {
@@ -36,7 +36,8 @@
 		"jstransformer-marked": "^1.0.3",
 		"pug": "^2.0.3",
 		"riot-compiler": "^3.4.0",
-		"tracer": "^0.8.12"
+		"tracer": "^0.8.12",
+		"uglify-js": "^3.3.23"
 	},
 	"devDependencies": {
 		"express": "^4.16.3",

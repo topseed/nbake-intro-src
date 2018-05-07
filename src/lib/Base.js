@@ -6,6 +6,7 @@ const yaml = require('js-yaml');
 const riotc = require('riot-compiler');
 const pug = require('pug');
 const logger = require('tracer').console();
+const UglifyJS = require('uglify-js');
 class NBake {
     ver() {
         return "v2.05.03";
@@ -216,7 +217,6 @@ class Tag {
             let name = val.substring(n);
             let p = name.lastIndexOf('.');
             name = name.substring(0, p);
-            name = name + '.js';
             console.log(' ' + dir + name);
             this.write(s, dir + name);
         }
@@ -224,7 +224,19 @@ class Tag {
     write(s, fn) {
         const r_options = { 'template': 'pug' };
         let js = riotc.compile(s, r_options);
-        fs.writeFileSync(fn, js);
+        fs.writeFileSync(fn + '.js', js);
+        let ugs = UglifyJS.minify(js, {
+            compress: {
+                drop_console: true,
+                passes: 2
+            },
+            output: {
+                beautify: false,
+                indent_level: 0,
+                width: 8000
+            }
+        });
+        fs.writeFileSync(fn + '.min.js', ugs.code);
     }
 }
 exports.Tag = Tag;

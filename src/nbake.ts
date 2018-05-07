@@ -24,7 +24,7 @@ function version() {
 	console.log('from '+ __dirname)
 	console.log('usage: nbake .')
 	console.log(' or: nbake any_dir')
-	console.log(' for hello world app: nbake -l')
+	console.log(' for hello world app: nbake -s')
 	console.log(' to process tags on _tag.pug: nbake -t .')
 	console.log(' to process items on meta_i to items.json: nbake -i .')
 	console.log(' for an example meta admin: nbake -x')
@@ -37,7 +37,7 @@ function version() {
 const optionDefinitions = [
 	{ name: 'nbake', defaultOption: true},
 	{ name: 'meta2', alias: 'x', type: Boolean },
-	{ name: 'hello1', alias: 'l', type: Boolean },
+	{ name: 'helloS', alias: 's', type: Boolean },
 	{ name: 'items',    alias: 'i', type: Boolean },
 	{ name: 'tag',      alias: 't', type: Boolean },
 	{ name: 'upload',   alias: 'u', type: Boolean },
@@ -121,7 +121,7 @@ if(argsParsed.tag)
 	tag(arg)
 else if(argsParsed.items)
 	itemize(arg)
-else if(argsParsed.hello1)
+else if(argsParsed.helloS)
 	unzip1()
 else if(argsParsed.meta2)
 	unzip2()
