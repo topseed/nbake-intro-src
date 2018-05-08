@@ -1,6 +1,6 @@
 {
 	"name": "nbake",
-	"version": "2.05.07",
+	"version": "2.05.11",
 	"description": "Bake a pug recursively, including any static or dynmic binding info",
 	"main": "nbake.js",
 	"bin": {

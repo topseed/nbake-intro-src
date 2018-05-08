@@ -9,7 +9,7 @@ const logger = require('tracer').console();
 const UglifyJS = require('uglify-js');
 class NBake {
     ver() {
-        return "v2.05.03";
+        return "v2.05.11";
     }
 }
 exports.NBake = NBake;
