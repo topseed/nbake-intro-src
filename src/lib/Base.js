@@ -250,8 +250,7 @@ class Tag {
             },
             output: {
                 beautify: false,
-                indent_level: 0,
-                width: 8000
+                indent_level: 0
             }
         });
         if (ugs.warnings)
