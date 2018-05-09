@@ -1,4 +1,4 @@
-extends /plugin/_layout
+extends /layout/_layout
 //- App Shell
 
 block head
@@ -9,12 +9,12 @@ block main
 	br
 	p
 	#here
-	
+
 	include part2.pug
 
 	script.
 		loadjs('pinc_d.js', 'binding', {async: false})
-		
+
 		loadjs.ready(['site','binding'], function () {
 			console.log('page 2')
 			var data = {
