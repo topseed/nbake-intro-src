@@ -6,10 +6,10 @@ const yaml = require('js-yaml');
 const riotc = require('riot-compiler');
 const pug = require('pug');
 const logger = require('tracer').console();
-const UglifyJS = require('uglify-js');
+const UglifyJS = require('uglify-es');
 class NBake {
     ver() {
-        return "v2.05.11";
+        return "v2.05.15";
     }
 }
 exports.NBake = NBake;
@@ -226,9 +226,27 @@ class Tag {
         let js = riotc.compile(s, r_options);
         fs.writeFileSync(fn + '.js', js);
         let ugs = UglifyJS.minify(js, {
+            mangle: false,
+            warnings: true,
+            keep_fnames: true,
+            keep_classnames: true,
+            safari10: true,
             compress: {
+                arrows: false,
+                reduce_vars: false,
+                join_vars: false,
+                hoist_props: false,
+                evaluate: false,
+                collapse_vars: false,
+                side_effects: false,
+                keep_fnames: true,
+                dead_code: false,
+                drop_debugger: false,
                 drop_console: true,
-                passes: 2
+                reduce_funcs: false,
+                computed_props: false,
+                keep_classnames: true,
+                unused: false
             },
             output: {
                 beautify: false,
@@ -236,6 +254,10 @@ class Tag {
                 width: 8000
             }
         });
+        if (ugs.warnings)
+            logger.trace(ugs.warnings);
+        if (ugs.error)
+            logger.trace(ugs.error);
         fs.writeFileSync(fn + '.min.js', ugs.code);
     }
 }
