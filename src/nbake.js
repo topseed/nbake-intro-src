@@ -86,7 +86,6 @@ function tag(arg) {
     let t = new Base_1.Tag(arg);
     let lst = t.get();
     t.bake(lst);
-    bake(arg);
 }
 if (argsParsed.tag)
     tag(arg);

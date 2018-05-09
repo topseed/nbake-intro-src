@@ -247,9 +247,11 @@ export class Items {
 
 export class Tag {
 	dir:string
+
 	constructor(dir:string) {
 		this.dir=dir
 	}
+
 	get() {
 		const rec = FileHound.create() //recurse
 			.paths(this.dir)
