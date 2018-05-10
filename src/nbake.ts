@@ -114,14 +114,6 @@ function tag(arg) {
 	let lst = t.get()
 	t.bake(lst)
 
-	/*
-	let arg2 = arg +'/tags'
-	if (fs.existsSync(arg2)) {
-		t = new Tag(arg2)
-		let lst = t.get()
-		t.bake(lst)
-	}
-	*/
 }
 
 // start: /////////////////////////////////////////////////////////////////////////////////////
