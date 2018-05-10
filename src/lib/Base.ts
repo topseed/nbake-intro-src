@@ -17,7 +17,7 @@ const UglifyJS = require('uglify-es')
 
 export class NBake {
 	ver() {
-		return "v2.05.15"
+		return "v2.05.16"
 	}
 }
 
@@ -188,28 +188,34 @@ export class Items {
 	}
 
 	addAnItem(dn) {
-		console.log(' '+ dn)
-		let y = yaml.load(fs.readFileSync(dn+'/meta.yaml'))
-		//logger.trace(y)
-		if(!y) return
-		if(y.hasOwnProperty('publish')) {
-			if(y.publish==false) {
-				console.log('  skipped')
+		try {
+			console.log(' '+ dn)
+			if ( !fs.existsSync( dn+'/meta.yaml') )
 				return
-			}
-		}//outer
+			let y = yaml.load(fs.readFileSync(dn+'/meta.yaml'))
+			//logger.trace(y)
+			if(!y) return
+			if(y.hasOwnProperty('publish')) {
+				if(y.publish==false) {
+					console.log('  skipped')
+					return
+				}
+			}//outer
 
-		Items.clean(y)
+			Items.clean(y)
 
-		let dl = this.dir.length
-		y.url = dn.substring(dl+1)
+			let dl = this.dir.length
+			y.url = dn.substring(dl+1)
 
-		//logger.trace(y)
-		if(!this.feed.items)
-			this.feed.items =[]
+			//logger.trace(y)
+			if(!this.feed.items)
+				this.feed.items =[]
 
-		this.feed.items.push(y)
-		console.log('  '+ this.feed.items.length)
+			this.feed.items.push(y)
+			console.log('  '+ this.feed.items.length)
+		} catch(err) {
+			logger.trace(err)
+		}
 	}
 
 	itemize():string {

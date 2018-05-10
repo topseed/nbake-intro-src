@@ -9,7 +9,7 @@ const logger = require('tracer').console();
 const UglifyJS = require('uglify-es');
 class NBake {
     ver() {
-        return "v2.05.15";
+        return "v2.05.16";
     }
 }
 exports.NBake = NBake;
@@ -149,23 +149,30 @@ class Items {
         this.dirs.pop();
     }
     addAnItem(dn) {
-        console.log(' ' + dn);
-        let y = yaml.load(fs.readFileSync(dn + '/meta.yaml'));
-        if (!y)
-            return;
-        if (y.hasOwnProperty('publish')) {
-            if (y.publish == false) {
-                console.log('  skipped');
+        try {
+            console.log(' ' + dn);
+            if (!fs.existsSync(dn + '/meta.yaml'))
                 return;
+            let y = yaml.load(fs.readFileSync(dn + '/meta.yaml'));
+            if (!y)
+                return;
+            if (y.hasOwnProperty('publish')) {
+                if (y.publish == false) {
+                    console.log('  skipped');
+                    return;
+                }
             }
+            Items.clean(y);
+            let dl = this.dir.length;
+            y.url = dn.substring(dl + 1);
+            if (!this.feed.items)
+                this.feed.items = [];
+            this.feed.items.push(y);
+            console.log('  ' + this.feed.items.length);
         }
-        Items.clean(y);
-        let dl = this.dir.length;
-        y.url = dn.substring(dl + 1);
-        if (!this.feed.items)
-            this.feed.items = [];
-        this.feed.items.push(y);
-        console.log('  ' + this.feed.items.length);
+        catch (err) {
+            logger.trace(err);
+        }
     }
     itemize() {
         console.log('Itemizing: ' + this.dir);
