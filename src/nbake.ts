@@ -57,7 +57,7 @@ function unzip1() {
 	process.exit()
 }
 function unzip2() {
-	let src:string =__dirname+ '/exMeta.zip'
+	let src:string =__dirname+ '/exMeta2.zip'
 	let zip = new AdmZip(src)
 	zip.extractAllTo(cwd +'/exMeta', /*overwrite*/true)
 	console.log('extracted a sample, check it, bake it')
