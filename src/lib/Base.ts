@@ -1,11 +1,9 @@
-import { TSInterfaceDeclaration } from "babel-types";
-
+//import { TSInterfaceDeclaration } from "babel-types";
 
 declare var module: any
 declare var require: any
 declare var process: any
 declare var __dirname: any
-
 
 const fs = require('fs')
 const FileHound = require('filehound')
@@ -17,7 +15,7 @@ const UglifyJS = require('uglify-es')
 
 export class NBake {
 	ver() {
-		return "v2.05.16"
+		return "v2.05.17"
 	}
 }
 
@@ -271,7 +269,7 @@ export class Tag {
 		}
 		return ret
 	}//()
-	bake(list) {
+	bake(list):string {
 		console.log('Looking for tags *-tag '+ this.dir)
 		for (let val of list) {//clean the strings
 			let s:string =  fs.readFileSync(val)
@@ -284,6 +282,7 @@ export class Tag {
 			console.log(' '+ dir+name)
 			this.write(s,dir+name)
 		}
+		return 'ok'
 	}//()
 
 	write(s:string, fn:string) {

@@ -9,7 +9,7 @@ const logger = require('tracer').console();
 const UglifyJS = require('uglify-es');
 class NBake {
     ver() {
-        return "v2.05.16";
+        return "v2.05.17";
     }
 }
 exports.NBake = NBake;
@@ -227,6 +227,7 @@ class Tag {
             console.log(' ' + dir + name);
             this.write(s, dir + name);
         }
+        return 'ok';
     }
     write(s, fn) {
         const r_options = { 'template': 'pug' };

@@ -1,6 +1,6 @@
 {
 	"name": "nbake",
-	"version": "2.05.16",
+	"version": "2.05.17",
 	"description": "Bake a pug recursively, including any static or dynmic binding info",
 	"main": "nbake.js",
 	"bin": {
@@ -40,7 +40,6 @@
 		"uglify-es": "^3.3.9"
 	},
 	"devDependencies": {
-		"express": "^4.16.3",
 		"sitemap": "^1.13.0"
 	}
 }
