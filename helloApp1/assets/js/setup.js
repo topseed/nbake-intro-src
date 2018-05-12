@@ -40,7 +40,7 @@ loadjs.ready(['promise','fetch'], function () {
 })
 loadjs.ready(['core'], function () {
 	//window['SITE'] = new signals.Signal() //site events
-	loadjs([ '/assets/Semantic-UI/dist/components/sidebar.min.js'
+	loadjs([ '//cdn.jsdelivr.net/npm/semantic-ui@2.3.1/dist/components/sidebar.min.js'
 		//,'//cdn.jsdelivr.net/npm/intersection-observer@0.5.0/intersection-observer.js'
 		//,'/assets/js/tsrouter.js'
 		//,'//cdn.jsdelivr.net/npm/dayjs@1.5.11/dist/dayjs.min.js'
@@ -63,7 +63,14 @@ loadjs.ready(['css', 'cssJs', 'site'], function () {
 	},1000/60)
 })
 
-console.log('setup', "v2.05.02")
+
+loadjs.ready(['style'], function () { //load large css
+	loadjs([ '/assets/css/semantic2.css'
+	], 'css2', {
+		async: false //required due to loadjs bug with bundles
+	})
+})
+console.log('setup', "v2.05.10")
 // usage: ////////////////////////////////////////////////////////////////////
 loadjs.ready(['core'], function () {// load data
 	console.log('core done', Date.now()-_start)
