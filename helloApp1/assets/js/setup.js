@@ -33,7 +33,7 @@ loadjs.ready(['promise','fetch'], function () {
 	/* load bundle 'core' */
 	loadjs([
 		'//cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js'
-		,'//cdn.jsdelivr.net/npm/signals@1.0.0/dist/signals.min.js'
+		//,'//cdn.jsdelivr.net/npm/signals@1.0.0/dist/signals.min.js'
 	], 'core', { // bundle ID
 			async: false //required due to loadjs bug with bundles
 	})
@@ -43,7 +43,6 @@ loadjs.ready(['core'], function () {
 	loadjs([ '//cdn.jsdelivr.net/npm/semantic-ui@2.3.1/dist/components/sidebar.min.js'
 		//,'//cdn.jsdelivr.net/npm/intersection-observer@0.5.0/intersection-observer.js'
 		//,'/assets/js/tsrouter.js'
-		//,'//cdn.jsdelivr.net/npm/dayjs@1.5.11/dist/dayjs.min.js'
 	], 'cssJs', {
 		async: false //required due to loadjs bug with bundles
 	})
