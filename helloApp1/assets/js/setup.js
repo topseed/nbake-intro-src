@@ -63,14 +63,17 @@ loadjs.ready(['css', 'cssJs', 'site'], function () {
 })
 
 
+
 loadjs.ready(['style'], function () { //load large css
-	loadjs([ '/assets/css/semantic2.css'
-		,'//unpkg.com/ionicons@4.0.0/dist/css/ionicons.min.css' // http://ionicons.com/usage
-	], 'css2', {
-		async: false //required due to loadjs bug with bundles
-	})
+	setTimeout(function(){
+		loadjs([ '/assets/css/semantic2.css'
+			,'//unpkg.com/ionicons@4.0.0/dist/css/ionicons.min.css' // http://ionicons.com/usage
+		], 'css2', {
+			async: false //required due to loadjs bug with bundles
+		})
+	},1000/60)
 })
-console.log('setup', "v2.05.10")
+console.log('setup', "v2.05.12")
 // usage: ////////////////////////////////////////////////////////////////////
 loadjs.ready(['core'], function () {// load data
 	console.log('core done', Date.now()-_start)
@@ -81,11 +84,13 @@ loadjs.ready(['site'], function () {// do nav, signal is ready, but not style
 loadjs.ready(['style'], function () {// 'show' page, ex: unhide
 	console.log('style done', Date.now()-_start)
 })
+loadjs.ready(['css2'], function () {// 'show' page, ex: unhide
+	console.log('css2 done', Date.now()-_start)
+})
 
 window.addEventListener('pageshow', function(event) {
 	console.log('pageshow:', event.timeStamp)
 })
-
 window.addEventListener('load', function(event) {
 	console.log('load:', event.timeStamp)
 })
