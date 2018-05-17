@@ -36,7 +36,7 @@ function version() {
 // args: //////////////////////////////////////////////////////////////////////////////////////////////////////
 const optionDefinitions = [
 	{ name: 'nbake', defaultOption: true},
-	{ name: 'meta2', alias: 'x', type: Boolean },
+	{ name: 'meta2', alias: 'a', type: Boolean },
 	{ name: 'helloS', alias: 's', type: Boolean },
 	{ name: 'items',    alias: 'i', type: Boolean },
 	{ name: 'tag',      alias: 't', type: Boolean },
