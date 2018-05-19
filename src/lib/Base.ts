@@ -15,7 +15,7 @@ const UglifyJS = require('uglify-es')
 
 export class NBake {
 	ver() {
-		return "v2.05.17"
+		return "v2.05.18"
 	}
 }
 
@@ -40,13 +40,13 @@ export class Dirs {
 	}//()
 }//class
 
-export class Meta {
+export class Dat {
 	props: any
 	path:string
 	constructor(path:string) {
 		//logger.trace(path)
 		this.path = path
-		let y = yaml.load(fs.readFileSync(path+'/meta.yaml'))
+		let y = yaml.load(fs.readFileSync(path+'/dat.yaml'))
 		if(!y) y= {}
 		this.props = y
 
@@ -101,9 +101,9 @@ export class Bake {
 
 		if (!fs.existsSync(this.dir+'/index.pug'))
 			return ' '
-		if (!fs.existsSync(this.dir+'/meta.yaml'))
+		if (!fs.existsSync(this.dir+'/dat.yaml'))
 			return ' '
-		let m = new Meta(this.dir)
+		let m = new Dat(this.dir)
 
 		//static data binding:
 		let html = pug.renderFile(this.dir+'/index.pug', m.getAll() )
@@ -127,8 +127,8 @@ export class Bake {
 			.findSync()
 
 		let obj = {}
-		if (fs.existsSync(this.dir+'/meta.yaml')) {
-			let m = new Meta(this.dir)
+		if (fs.existsSync(this.dir+'/dat.yaml')) {
+			let m = new Dat(this.dir)
 			obj = m.getAll()
 		}
 
@@ -171,7 +171,7 @@ export class Items {
 	feed //rss
 	constructor(dir:string) {
 
-		let fn:string = dir +'/meta_i.yaml'
+		let fn:string = dir +'/dat_i.yaml'
 		// if it does not exist, go up a level
 		if (!fs.existsSync(fn)) {
 			let n = dir.lastIndexOf('/')
@@ -188,9 +188,9 @@ export class Items {
 	addAnItem(dn) {
 		try {
 			console.log(' '+ dn)
-			if ( !fs.existsSync( dn+'/meta.yaml') )
+			if ( !fs.existsSync( dn+'/dat.yaml') )
 				return
-			let y = yaml.load(fs.readFileSync(dn+'/meta.yaml'))
+			let y = yaml.load(fs.readFileSync(dn+'/dat.yaml'))
 			//logger.trace(y)
 			if(!y) return
 			if(y.hasOwnProperty('publish')) {
@@ -221,7 +221,7 @@ export class Items {
 
 		const rootDir:string = this.dir
 		// header
-		let fn:string = rootDir +'/meta_i.yaml'
+		let fn:string = rootDir +'/dat_i.yaml'
 		let y = yaml.load(fs.readFileSync((fn)))
 		console.log(y)
 
@@ -328,6 +328,6 @@ export class Tag {
 }//class
 
 module.exports = {
-	 Meta, Dirs, Bake, Items, Tag, NBake
+	 Dat, Dirs, Bake, Items, Tag, NBake
 }
 
