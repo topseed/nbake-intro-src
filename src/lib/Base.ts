@@ -15,7 +15,7 @@ const UglifyJS = require('uglify-es')
 
 export class NBake {
 	ver() {
-		return "v2.05.18"
+		return "v2.05.19"
 	}
 }
 
