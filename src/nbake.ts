@@ -10,7 +10,7 @@ const fs = require('fs')
 const path = require('path')
 const commandLineArgs = require('command-line-args')
 
-import { Dat, Dirs, Bake, Items, Tag, NBake } from './lib/Base'
+import { Dirs, Bake, Items, Tag, NBake } from './lib/Base'
 
 
 // imports done /////////////////////////////////////////////

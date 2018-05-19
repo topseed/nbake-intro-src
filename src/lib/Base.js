@@ -9,7 +9,7 @@ const logger = require('tracer').console();
 const UglifyJS = require('uglify-es');
 class NBake {
     ver() {
-        return "v2.05.17";
+        return "v2.05.18";
     }
 }
 exports.NBake = NBake;
@@ -33,10 +33,10 @@ class Dirs {
     }
 }
 exports.Dirs = Dirs;
-class Meta {
+class Dat {
     constructor(path) {
         this.path = path;
-        let y = yaml.load(fs.readFileSync(path + '/meta.yaml'));
+        let y = yaml.load(fs.readFileSync(path + '/dat.yaml'));
         if (!y)
             y = {};
         this.props = y;
@@ -73,7 +73,7 @@ class Meta {
         return this.props;
     }
 }
-exports.Meta = Meta;
+exports.Dat = Dat;
 class Bake {
     constructor(dir) {
         this.dir = dir;
@@ -84,9 +84,9 @@ class Bake {
         this.cli(this.dir);
         if (!fs.existsSync(this.dir + '/index.pug'))
             return ' ';
-        if (!fs.existsSync(this.dir + '/meta.yaml'))
+        if (!fs.existsSync(this.dir + '/dat.yaml'))
             return ' ';
-        let m = new Meta(this.dir);
+        let m = new Dat(this.dir);
         let html = pug.renderFile(this.dir + '/index.pug', m.getAll());
         let ver = '<!- nB ' + new NBake().ver() + ' -->';
         html = html.replace(Bake.bodyHtml, ver + Bake.bodyHtml);
@@ -102,8 +102,8 @@ class Bake {
             .match('*_d.pug')
             .findSync();
         let obj = {};
-        if (fs.existsSync(this.dir + '/meta.yaml')) {
-            let m = new Meta(this.dir);
+        if (fs.existsSync(this.dir + '/dat.yaml')) {
+            let m = new Dat(this.dir);
             obj = m.getAll();
         }
         for (let fn of files) {
@@ -137,7 +137,7 @@ Bake.bodyHtml = '</body></html>';
 exports.Bake = Bake;
 class Items {
     constructor(dir) {
-        let fn = dir + '/meta_i.yaml';
+        let fn = dir + '/dat_i.yaml';
         if (!fs.existsSync(fn)) {
             let n = dir.lastIndexOf('/');
             dir = dir.substring(0, n);
@@ -151,9 +151,9 @@ class Items {
     addAnItem(dn) {
         try {
             console.log(' ' + dn);
-            if (!fs.existsSync(dn + '/meta.yaml'))
+            if (!fs.existsSync(dn + '/dat.yaml'))
                 return;
-            let y = yaml.load(fs.readFileSync(dn + '/meta.yaml'));
+            let y = yaml.load(fs.readFileSync(dn + '/dat.yaml'));
             if (!y)
                 return;
             if (y.hasOwnProperty('publish')) {
@@ -177,7 +177,7 @@ class Items {
     itemize() {
         console.log('Itemizing: ' + this.dir);
         const rootDir = this.dir;
-        let fn = rootDir + '/meta_i.yaml';
+        let fn = rootDir + '/dat_i.yaml';
         let y = yaml.load(fs.readFileSync((fn)));
         console.log(y);
         Items.clean(y);
@@ -270,5 +270,5 @@ class Tag {
 }
 exports.Tag = Tag;
 module.exports = {
-    Meta, Dirs, Bake, Items, Tag, NBake
+    Dat, Dirs, Bake, Items, Tag, NBake
 };

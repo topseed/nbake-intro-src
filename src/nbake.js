@@ -17,14 +17,16 @@ function version() {
     console.log(' or: nbake any_dir');
     console.log(' for hello world app: nbake -s');
     console.log(' to process tags on _tag.pug: nbake -t .');
-    console.log(' to process items on meta_i to items.json: nbake -i .');
+    console.log(' to process items on dat_i to items.json: nbake -i .');
+    console.log(' for an example buildPG: nbake -b');
     console.log(' for an example meta admin: nbake -x');
     console.log(' for full docs and more optional arguments check: - http://github.com/topseed ');
     process.exit();
 }
 const optionDefinitions = [
     { name: 'nbake', defaultOption: true },
-    { name: 'meta2', alias: 'x', type: Boolean },
+    { name: 'metA', alias: 'a', type: Boolean },
+    { name: 'buildPG', alias: 'b', type: Boolean },
     { name: 'helloS', alias: 's', type: Boolean },
     { name: 'items', alias: 'i', type: Boolean },
     { name: 'tag', alias: 't', type: Boolean },
@@ -34,17 +36,24 @@ const optionDefinitions = [
 const argsParsed = commandLineArgs(optionDefinitions);
 let arg = argsParsed.nbake;
 console.log();
-function unzip1() {
-    let src = __dirname + '/exApp1.zip';
+function unzipS() {
+    let src = __dirname + '/helloAppS.zip';
     let zip = new AdmZip(src);
-    zip.extractAllTo(cwd + '/helloApp1', true);
+    zip.extractAllTo(cwd + '/helloAppS', true);
     console.log('extracted hello world, check it, bake it');
     process.exit();
 }
-function unzip2() {
+function unzipA() {
     let src = __dirname + '/exMeta.zip';
     let zip = new AdmZip(src);
     zip.extractAllTo(cwd + '/exMeta', true);
+    console.log('extracted a sample, check it, bake it');
+    process.exit();
+}
+function unzipB() {
+    let src = __dirname + '/build.zip';
+    let zip = new AdmZip(src);
+    zip.extractAllTo(cwd + '/build', true);
     console.log('extracted a sample, check it, bake it');
     process.exit();
 }
@@ -92,9 +101,11 @@ if (argsParsed.tag)
 else if (argsParsed.items)
     itemize(arg);
 else if (argsParsed.helloS)
-    unzip1();
-else if (argsParsed.meta2)
-    unzip2();
+    unzipS();
+else if (argsParsed.metaA)
+    unzipA();
+else if (argsParsed.buildPG)
+    unzipB();
 else if (!arg)
     version();
 else
