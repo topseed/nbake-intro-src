@@ -32,12 +32,14 @@
 	window.LogzioLogger = LogzioLogger
 })(window)
 
+/*
 window.log = new LogzioLogger('__YOUR_API_TOKEN__')
 
 log.log('Hello, this is just a test')
 log.log({hello: 'there',
 			test: 'hello world'
 })
+*/
 
 // ////////////////////////////////////////////////////////////////////////////
  // http://github.com/muicss/loadjs/issues/56
@@ -100,8 +102,6 @@ loadjs.ready(['css', 'cssJs', 'site'], function () {
 	},1000/60)
 })
 
-
-
 loadjs.ready(['style'], function () { //load large css
 	setTimeout(function(){
 		loadjs([ '/assets/css/semantic2.css'
@@ -111,7 +111,7 @@ loadjs.ready(['style'], function () { //load large css
 		})
 	},1000/60)
 })
-console.log('setup', "v2.05.12")
+
 // usage: ////////////////////////////////////////////////////////////////////
 loadjs.ready(['core'], function () {// load data
 	console.log('core done', Date.now()-_start)
@@ -132,6 +132,8 @@ window.addEventListener('pageshow', function(event) {
 window.addEventListener('load', function(event) {
 	console.log('load:', event.timeStamp)
 })
+
+console.log('setup', "v2.05.20")
 
 // util: /////////////////////////////////////////////////////////////////////
 function getUrlVars() {
