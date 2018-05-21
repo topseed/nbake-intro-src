@@ -115,7 +115,7 @@ function tag(arg) {
 	let lst = t.get()
 	t.bake(lst)
 
-	// bake(arg) // now do the regular bake, but one up
+	bake(arg) // now do the regular bake
 
 }
 
