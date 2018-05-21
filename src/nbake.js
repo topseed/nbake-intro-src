@@ -19,15 +19,13 @@ function version() {
     console.log(' for hello world app: nbake -s');
     console.log(' to process tags on _tag.pug: nbake -t .');
     console.log(' to process items on dat_i to items.json: nbake -i .');
-    console.log(' for an example buildPG: nbake -b');
-    console.log(' for an example meta admin: nbake -x');
+    console.log(' for an example meta admin: nbake -a');
     console.log(' for full docs and more optional arguments check: - http://github.com/topseed ');
     process.exit();
 }
 const optionDefinitions = [
     { name: 'nbake', defaultOption: true },
-    { name: 'metA', alias: 'a', type: Boolean },
-    { name: 'buildPG', alias: 'b', type: Boolean },
+    { name: 'metaA', alias: 'a', type: Boolean },
     { name: 'helloS', alias: 's', type: Boolean },
     { name: 'items', alias: 'i', type: Boolean },
     { name: 'tag', alias: 't', type: Boolean },
@@ -47,15 +45,8 @@ function unzipS() {
 function unzipA() {
     let src = __dirname + '/exMeta.zip';
     let zip = new AdmZip(src);
-    zip.extractAllTo(cwd + '/exMeta', true);
-    console.log('extracted a sample, check it, bake it');
-    process.exit();
-}
-function unzipB() {
-    let src = __dirname + '/build.zip';
-    let zip = new AdmZip(src);
-    zip.extractAllTo(cwd + '/build', true);
-    console.log('extracted a sample, check it, bake it');
+    zip.extractAllTo(cwd, true);
+    console.log('extracted a sample');
     process.exit();
 }
 if (arg) {
@@ -105,8 +96,6 @@ else if (argsParsed.helloS)
     unzipS();
 else if (argsParsed.metaA)
     unzipA();
-else if (argsParsed.buildPG)
-    unzipB();
 else if (!arg)
     version();
 else
