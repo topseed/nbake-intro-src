@@ -227,7 +227,7 @@ export class Items {
 
 		Items.clean(y)
 		y.nbVer = new NBake().ver()
-		y.note = 'This is statically serveed and visible publicly. Check dbake if you want something different'
+		y.note = 'This is statically served and visible publicly.'
 		this.feed = y
 
 		for (let val of this.dirs) {
